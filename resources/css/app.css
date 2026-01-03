@@ -9,3 +9,62 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+* {
+            font-family: 'Avenir Next LT Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .session-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background-color: #f3f4f6; 
+            border-color: #e5e7eb;
+            color: #9ca3af;
+            transform: none; 
+        }
+
+        .session-btn:disabled:hover {
+            background-color: #f3f4f6;
+        }
+        
+        .sport-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .sport-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 221, 192, 0.15);
+        }
+        
+        .sport-card.selected {
+            border-color: #00DDC0;
+            background-color: rgba(0, 221, 192, 0.05);
+        }
+
+        .session-btn {
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .session-btn:hover {
+            background-color: rgba(0, 221, 192, 0.1);
+        }
+        
+        .session-btn.selected {
+            background-color: #00DDC0;
+            color: white;
+        }
+        
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(70%) sepia(50%) saturate(500%) hue-rotate(130deg);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }

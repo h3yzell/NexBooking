@@ -9,17 +9,22 @@ use App\Models\Booking;
 class BookingController extends Controller
 {
     public function store(Request $request) {
-        $incomingFields = $request->validate([
+        
+        
+        $booking = $request->validate([
             'sport' => 'required',
             'booking_date' => 'required|date',
-            'time_slot' => 'required',
-            'name' => 'required',
-            'matric_number' => 'required',
-            'email' => 'required|email',
-            'phone_number' => 'required',
+            'time_slot' => 'required'
         ]);
-        Booking::create($incomingFields);
-        return response()->json(['message' => 'Booking created successfully!'], 201);
+
+        Booking::create($booking);
+
+
+        return view("confirmation", [
+            "sport_type" => $booking['sport'],
+            "booking_date" => $booking['booking_date'],
+            "session_time" => $booking['time_slot']
+        ]);
     }
 
     public function checkAvailability(Request $request)
@@ -27,13 +32,13 @@ class BookingController extends Controller
         $sport = $request->query('sport');
         $date = $request->query('date');
 
-        $bookings = Booking::where('sport', $sport)
+        $bookings = Booking::where('sport', $sport)->groupBy('time_slot')
+            ->select('time_slot', DB::raw('COUNT(*) as total_booked'))
             ->where('booking_date', $date)
-            ->select('time_slot', DB::raw('count(*) as total'))
-            ->groupBy('time_slot')
-            ->pluck('total', 'time_slot')
-            ->toArray();
-
+            ->get()
+            ->pluck('total_booked', 'time_slot');
+        
+            
         return response()->json($bookings);
     }
 }
