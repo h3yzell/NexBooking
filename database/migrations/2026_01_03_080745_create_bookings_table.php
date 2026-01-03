@@ -16,11 +16,7 @@ return new class extends Migration
             $table->string('sport');
             $table->date('booking_date');
             $table->string('time_slot');
-            $table->string('name');
             $table->string('matric_number');
-            $table->string('email');
-            $table->string('phone_number');
-            $table->timestamps();
         });
     }
 
