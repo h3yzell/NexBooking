@@ -17,6 +17,7 @@ return new class extends Migration
             $table->date('booking_date');
             $table->string('time_slot');
             $table->string('matric_number');
+            $table->timestamps();
         });
     }
 
