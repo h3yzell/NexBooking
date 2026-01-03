@@ -85,6 +85,8 @@
                 <input 
                     type="date" 
                     id="bookingDate"
+                    value="{{ now()->addDay()->toDateString() }}"
+                    min="{{ now()->toDateString() }}"
                     class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#00DDC0] text-lg font-light"
                 >
             </div>
