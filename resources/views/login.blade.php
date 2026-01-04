@@ -33,20 +33,18 @@
 
             <form action="/login" method="POST" class="flex flex-col">
                 @csrf
-            <div class="flex flex-col gap-2 my-4">
+            <div class="flex flex-col gap-2 my-2">
                 Matric No
-                <input type="text" name="matric_no" class="p-2 border-gray-200 border-2 rounded-md w-full" required>
+                <input type="text" name="matric_no" class="p-2 border-gray-200 border-2 rounded-md w-full focus:outline-none focus:border-[#00DDC0]" required>
             </div>
-            <div class="flex flex-col gap-2 my-4">
+            <div class="flex flex-col gap-2 my-4 mb-10">
                 Password
-                <input type="password" name="password" class="p-2 border-gray-200 rounded-md border-2 w-full" required>
+                <input type="password" name="password" class="p-2 border-gray-200 rounded-md border-2 w-full focus:outline-none focus:border-[#00DDC0]" required>
             </div>
-            <button type="submit" class="bg-[#00DDC0] p-2 w-full rounded-md cursor-pointer">Log in</button>
+            <button type="submit" class="bg-[#00DDC0] text-[#FEFEFE] font-semibold p-2 w-full hover:opacity-75 rounded-md cursor-pointer">Log in</button>
             </form>
         </div>
 
     </section>
-
-
 </body>
 </html>
