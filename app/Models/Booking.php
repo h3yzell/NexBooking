@@ -9,6 +9,7 @@ class Booking extends Model
     protected $fillable = [
         'sport',
         'booking_date',
-        'time_slot'
+        'time_slot',
+        'matric_no',
     ];
 }

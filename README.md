@@ -19,4 +19,5 @@ To ease setup it is recommended to use XAMPP instead
 5. Create an app key via `php artisan key:generate`
 6. Create a new MySQL database with the name `nexbooking`
 7. Run `php artisan migrate`
-8. Run both `npm run dev` and `php artisan serve` to serve the application on port 8000
+8. Run `php artisan db:seed`
+9. Run both `npm run dev` and `php artisan serve` to serve the application on port 8000

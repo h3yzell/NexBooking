@@ -1,24 +1,27 @@
 @extends('layouts.app')
 
-@section('title', 'IIUM Court Booking')
-
-@section('content')
-<div class="max-w-4xl mx-auto px-6 py-16">
-    <div class="confirmed text-center mb-16">
-        <h1 class="text-4xl md:text-5xl font-light mb-4 tracking-tight">IIUM Court Booking</h1>
-        <p class="text-gray-500 text-lg font-light">Reserve your sports facility in just a few steps</p>
-    </div>
-
-    <form action="/bookings" method="POST" id="bookingForm">
-
-    @csrf
-    <input type="hidden" name="sport" id="selectedSport" value="" required>
-    <input type="hidden" name="time_slot" id="selectedSession" value="" required>
-
-    <section class="confirmed mb-16">
-        <div class="mb-8">
-            <h2 class="text-2xl font-light mb-2">Select Sport</h2>
-            <div class="w-16 h-0.5 bg-[#00DDC0]"></div>
+    <title>IIUM Court Booking</title>
+    <link rel="preconnect" href="https://rsms.me/" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/avenir-next-lt-pro" />
+    @vite('resources/css/app.css')
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Header -->
+    <header class="border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/IIUM_Logo_2019.svg/2560px-IIUM_Logo_2019.svg.png" alt="IIUM Logo" class="h-12">
+            </div>
+            <div class="rounded-lg flex items-center gap-10">
+                <div class="text-sm font-medium hover:text-[#00DDC0] transition-colors cursor-pointer">
+                    {{ $matric_no }}
+                </div>
+                <form action="/logout" method="POST">
+                    @csrf
+                    <button class="rounded-lg py-2 px-4 text-sm font-medium bg-red-500 text-white transition-colors cursor-pointer">Log Out</button>
+                </form>
+            </div>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
