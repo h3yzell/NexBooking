@@ -43,6 +43,7 @@
         <div class="flex gap-4 justify-center">
             <a 
                 id="viewBookingBtn"
+                href="/viewbookings"
                 class="px-8 py-3 bg-[#00DDC0] text-white rounded-lg font-light hover:bg-opacity-90 transition-all cursor-pointer"
             >
                 View My Bookings

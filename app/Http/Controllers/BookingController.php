@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Booking;
+use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
@@ -57,4 +58,47 @@ class BookingController extends Controller
             
         return response()->json($bookings);
     }
+
+        public function viewBookings()
+    {
+        if (!session()->has('matric_no')) {
+            return redirect('/login')->with('error_msg', 'Please log in first.');
+        }
+
+        $matric_no = session('matric_no');
+
+        $bookings = Booking::where('matric_no', $matric_no)
+            ->orderBy('booking_date', 'desc')
+            ->get();
+
+        return view('viewbookings', compact('bookings'));
+    }
+    public function cancelBooking($id)
+    {
+        // Get the booking
+        $booking = Booking::find($id);
+
+        // Check if booking exists
+        if (!$booking) {
+            return redirect()->back()->with('error_msg', 'Booking not found.');
+        }
+
+        // Check if the booking belongs to the logged-in user
+        if ($booking->matric_no !== session('matric_no')) {
+            return redirect()->back()->with('error_msg', 'You cannot cancel this booking.');
+        }
+
+        // Check if the booking date is in the past
+        if (\Carbon\Carbon::parse($booking->booking_date)->isPast()) {
+            return redirect()->back()->with('error_msg', 'Cannot cancel past bookings.');
+        }
+
+        // Delete the booking
+        $booking->delete();
+
+        return redirect()->back()->with('success_msg', 'Booking canceled successfully.');
+    }
+    
+
+
 }

@@ -15,3 +15,7 @@ Route::get('/check-availability', [BookingController::class, 'checkAvailability'
 Route::get('/', [StudentController::class, 'index']);
 Route::post('/login', [StudentController::class, 'login']);
 Route::post('/logout', [StudentController::class, 'logout']);
+
+Route::get('/viewbookings', [BookingController::class, 'viewBookings']);
+Route::delete('/bookings/cancel/{id}', [BookingController::class, 'cancelBooking'])->name('bookings.cancel');
+
