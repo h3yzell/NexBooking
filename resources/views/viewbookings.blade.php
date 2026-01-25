@@ -49,11 +49,7 @@
 </div>
 @endsection
 
-@if(session('success_msg'))
-    <script>
-        alert("{{ session('success_msg') }}");
-    </script>
-@endif
+
 @if(session('error_msg'))
     <script>
         alert("{{ session('error_msg') }}");

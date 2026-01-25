@@ -27,9 +27,6 @@
 
                     <option value="" disabled>Select a sport</option>
 
-                    <option value="Football" {{ $booking->sport == 'Football' ? 'selected' : '' }}>
-                        Football
-                    </option>
                     <option value="Futsal" {{ $booking->sport == 'Futsal' ? 'selected' : '' }}>
                         Futsal
                     </option>
