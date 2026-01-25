@@ -33,7 +33,7 @@
         }
         
         .sport-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(0, 221, 192, 0.15);
         }
         
@@ -48,12 +48,12 @@
         }
         
         .session-btn:hover {
-            background-color: rgba(0, 221, 192, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 221, 192, 0.15);
         }
         
         .session-btn.selected {
-            background-color: #00DDC0;
-            color: white;
+            border-color: #00DDC0;
         }
         
         input[type="date"]::-webkit-calendar-picker-indicator {

@@ -105,7 +105,7 @@
         </div>
     </section>
 
-    <button type="submit" class=" bg-[#00DDC0] text-white px-8 py-3 rounded-lg font-bold cursor-pointer" id="bookNowBtn">Book Now</button>
+    <button type="submit" class="flex justify-self-center bg-[#00DDC0] text-white px-20 py-3 hover:opacity-75 rounded-lg font-semibold cursor-pointer " id="bookNowBtn">Book Now</button>
 
     </form>
 </div>

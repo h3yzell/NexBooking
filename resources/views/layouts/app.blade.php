@@ -20,14 +20,14 @@
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/IIUM_Logo_2019.svg/2560px-IIUM_Logo_2019.svg.png" alt="IIUM Logo" class="h-12">
             </div>
             <div class="rounded-lg flex items-center gap-3">
-                <div class="text-sm font-medium hover:text-[#00DDC0] transition-colors cursor-pointer px-4 py-2">
+                <div class="text-sm font-medium hover:text-[#00DDC0] transition-colors cursor-default px-4 py-2">
                     {{ session('matric_no') ?? '' }}
 
                 </div>
-                <a href="/viewbookings" class="rounded-lg py-2 px-4 text-sm font-medium  border transition-colors cursor-pointer">View Bookings</a>
+                <a href="/viewbookings" class="rounded-lg py-2 px-4 text-sm font-medium hover:text-[#00DDC0] border transition-colors cursor-pointer">View Bookings</a>
                 <form action="/logout" method="POST">
                     @csrf
-                    <button class="rounded-lg py-2 px-4 text-sm font-medium bg-red-500 text-white transition-colors cursor-pointer">Log Out</button>
+                    <button class="rounded-lg py-2 px-4 text-sm font-medium bg-red-500 hover:bg-red-400 text-white transition-colors cursor-pointer">Log Out</button>
                 </form>
             </div>
         </div>

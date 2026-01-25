@@ -15,31 +15,36 @@
                     $isPast = \Carbon\Carbon::parse($booking->booking_date)->isPast();
                 @endphp
 
-                <div class="p-4 mb-2 rounded border transition-opacity
-                            {{ $isPast ? 'opacity-50 pointer-events-none' : 'opacity-100 hover:bg-gray-100 cursor-pointer' }}">
+                <div class="p-4 mb-2 rounded border border-gray-400 transition-opacity
+                            {{ $isPast ? 'opacity-50 pointer-events-none' : 'opacity-100' }}">
                     <div>
-                    <p>Sport: {{ $booking->sport }}</p>
-                    <p>Date: {{ $booking->booking_date }}</p>
-                    <p>Time Slot: {{ $booking->time_slot }}</p>
+                        <p>Sport: {{ $booking->sport }}</p>
+                        <p>Date: {{ $booking->booking_date }}</p>
+                        <p>Time Slot: {{ $booking->time_slot }}</p>
                     </div>
 
                     @if(!$isPast)
+                    <div class="flex justify-end mr-5">
+                        <div class="flex space-x-3 mt-2">
                         <form action="{{ route('bookings.cancel', $booking->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to cancel this booking?');">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
-                                Cancel
+                            <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 cursor-pointer">
+                                Cancel Booking
                             </button>
                         </form>
                         <a href="{{ route('bookings.edit', $booking->id) }}"
-                        class="text-blue-600 underline">
+                        class="bg-blue-500 text-white px-5 py-1 rounded hover:bg-blue-600">
                             Edit
                         </a>
-                                    @endif
+                    </div>
+                    </div>
+                    
+                    @endif
                                     
-                                </div>
-                            @endforeach
-                        </div>
+                </div>
+            @endforeach
+        </div>
     @endif
 </div>
 @endsection
