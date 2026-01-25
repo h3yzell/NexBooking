@@ -31,11 +31,15 @@
                                 Cancel
                             </button>
                         </form>
-                    @endif
-                    
-                </div>
-            @endforeach
-        </div>
+                        <a href="{{ route('bookings.edit', $booking->id) }}"
+                        class="text-blue-600 underline">
+                            Edit
+                        </a>
+                                    @endif
+                                    
+                                </div>
+                            @endforeach
+                        </div>
     @endif
 </div>
 @endsection
@@ -49,4 +53,10 @@
     <script>
         alert("{{ session('error_msg') }}");
     </script>
+@endif
+
+@if(session('success_msg'))
+<script>
+    alert(@json(session('success_msg')));
+</script>
 @endif

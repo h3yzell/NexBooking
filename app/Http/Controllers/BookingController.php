@@ -98,7 +98,46 @@ class BookingController extends Controller
 
         return redirect()->back()->with('success_msg', 'Booking canceled successfully.');
     }
-    
+    public function edit($id)
+    {
+        $booking = Booking::findOrFail($id);
+
+        // Ownership check
+        if ($booking->matric_no !== session('matric_no')) {
+            abort(403);
+        }
+
+        // Prevent editing past bookings
+        if (\Carbon\Carbon::parse($booking->booking_date)->isPast()) {
+            return redirect()->back();
+        }
+
+        return view('edit-booking', compact('booking'));
+    }
+    public function update(Request $request, $id)
+    {
+        $booking = Booking::findOrFail($id);
+
+        // Ownership check
+        if ($booking->matric_no !== session('matric_no')) {
+            abort(403);
+        }
+
+        // Prevent updating past bookings
+        if (\Carbon\Carbon::parse($booking->booking_date)->isPast()) {
+            return redirect()->back();
+        }
+
+        $request->validate([
+            'sport' => 'required',
+            'booking_date' => 'required|date',
+            'time_slot' => 'required'
+        ]);
+
+        $booking->update($request->only('sport', 'booking_date', 'time_slot'));
+
+        return redirect('/viewbookings')->with('success_msg', 'Booking updated successfully.');
+    }
 
 
 }

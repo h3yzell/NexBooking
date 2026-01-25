@@ -19,3 +19,6 @@ Route::post('/logout', [StudentController::class, 'logout']);
 Route::get('/viewbookings', [BookingController::class, 'viewBookings']);
 Route::delete('/bookings/cancel/{id}', [BookingController::class, 'cancelBooking'])->name('bookings.cancel');
 
+Route::get('/bookings/{id}/edit', [BookingController::class, 'edit']) ->name('bookings.edit');
+
+Route::put('/bookings/{id}', [BookingController::class, 'update']) ->name('bookings.update');
